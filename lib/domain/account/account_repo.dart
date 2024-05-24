@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:athang_expense_tracker/data/model/account/account_model.dart';
 import 'package:athang_expense_tracker/plugins/http.dart';
+
+import 'account_model.dart';
 
 class AccountRepo {
   Future loadAccounts() async{

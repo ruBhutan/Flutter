@@ -1,7 +1,7 @@
-import 'package:athang_expense_tracker/data/model/account/account_model.dart';
-import 'package:athang_expense_tracker/data/model/account/account_repo.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/account/account_model.dart';
+import '../../domain/account/account_repo.dart';
 import '../../widgets/common/DataLoading.dart';
 
 class AccountScreen extends StatefulWidget {
