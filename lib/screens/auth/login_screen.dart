@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:athang_expense_tracker/domain/models/auth_model.dart';
-import 'package:athang_expense_tracker/domain/repo/auth_repo.dart';
+import 'package:athang_expense_tracker/domain/auth/auth_model.dart';
+import 'package:athang_expense_tracker/domain/auth/auth_repo.dart';
 import 'package:athang_expense_tracker/plugins/http.dart';
 import 'package:athang_expense_tracker/plugins/local_shared_preferences.dart';
 import 'package:flutter/material.dart';

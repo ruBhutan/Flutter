@@ -1,7 +1,7 @@
 import 'dart:convert';
 import '../../plugins/http.dart';
 import '../../plugins/local_shared_preferences.dart';
-import '../models/auth_model.dart';
+import 'auth_model.dart';
 
 Future loginWithEmailAndPassword() async {
   final res = await PostRequest('authentication', <String, String>{
