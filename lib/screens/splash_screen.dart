@@ -4,6 +4,8 @@ import 'package:athang_expense_tracker/screens/landing/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../plugins/local_shared_preferences.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -18,8 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> checkIfUserIsLoggedIn() async{
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final token = await prefs.getString('_TOKEN');
+    // final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final token = await getTokenFromLocalStorage();
     print('inside method');
     print(token);
     if(token != ''){
