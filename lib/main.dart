@@ -2,7 +2,10 @@ import 'package:athang_expense_tracker/screens/auth/login_screen.dart';
 import 'package:athang_expense_tracker/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'plugins/local_shared_preferences.dart';
+
 void main() {
+  LocalStorage();
   runApp(const MyApp());
 }
 

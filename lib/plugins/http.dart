@@ -10,7 +10,7 @@ Future GetRequest(url) async{
 
 Future PostRequest(url, body) async{
   return await http.post(
-      Uri.parse(url),
+      Uri.parse(BaseConfig().baseUrl + url),
       headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       },
