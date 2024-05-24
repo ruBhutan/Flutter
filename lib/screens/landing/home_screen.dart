@@ -19,25 +19,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text('Home')),
-        body: Container(
-          child: Column(
-            children: [
-              Center(
-                child: Text(
-                  'Home',
-                  style: TypoStyles().kPageHeader,
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  logoutUser();
-                },
-                child: Text('Logout'),
-              )
-            ],
+    return Container(
+      child: Column(
+        children: [
+          Center(
+            child: Text(
+              'Home',
+              style: TypoStyles().kPageHeader,
+            ),
           ),
-        ));
+          ElevatedButton(
+            onPressed: () {
+              logoutUser();
+            },
+            child: Text('Logout'),
+          )
+        ],
+      ),
+    );
   }
 }

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../hoc/home_layout.dart';
 import '../landing/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
            AuthModel(username: _username.text, password: _password.text));
 
        Navigator.of(context)
-           .pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
+           .pushReplacement(MaterialPageRoute(builder: (_) => HomeLayout()));
      }
     } catch (e) {
       ScaffoldMessenger.of(context)
