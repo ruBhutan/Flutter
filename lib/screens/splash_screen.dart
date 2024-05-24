@@ -22,8 +22,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> checkIfUserIsLoggedIn() async{
     // final SharedPreferences prefs = await SharedPreferences.getInstance();
     final token = await getTokenFromLocalStorage();
-    print('inside method');
-    print(token);
     if(token != ''){
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>HomeScreen()));
     }else{

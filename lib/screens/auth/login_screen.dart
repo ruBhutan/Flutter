@@ -25,12 +25,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> loginUser() async {
     try {
-     if(!_formKey.currentState!.validate()){
+     if(_formKey.currentState!.validate()){
+
        setState(() {
          loading = true;
        });
        final res = await AuthRepo().loginWithEmailAndPassword(
            AuthModel(username: _username.text, password: _password.text));
+
        Navigator.of(context)
            .pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
      }
