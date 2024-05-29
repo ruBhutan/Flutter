@@ -12,21 +12,26 @@ class AccountModel {
   });
 
   factory AccountModel.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-      'id': int id,
-      'title': String title,
-      'img': String img,
-      'openingBalance': num openingBalance,
-      } =>
-          AccountModel(
-            img: img,
-            title: title,
-            openingBalance: openingBalance,
-            id: id,
-          ),
-      _ => throw const FormatException('Format not supported.'),
-    };
+    // return switch (json) {
+    //   {
+    //   'id': int id,
+    //   'title': String title,
+    //   'img': String img,
+    //   'openingBalance': num openingBalance,
+    //   } =>
+    //       AccountModel(
+    //         img: img,
+    //         title: title,
+    //         openingBalance: openingBalance,
+    //         id: id,
+    //       ),
+    //   _ => throw const FormatException('Format not supported.'),
+    // };
+    return AccountModel(
+      id: json['id'],
+      title: json['title'],
+      img: json['img'],
+      openingBalance: json['openingBalance']);
   }
 
 }

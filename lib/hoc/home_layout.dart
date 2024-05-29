@@ -24,12 +24,17 @@ class _HomeLayoutState extends State<HomeLayout> {
       appBar: AppBar(
         title: Text(titles[_selectedIndex]),
       ),
-      body: SingleChildScrollView(
-        child: screens[_selectedIndex],
+      body: RefreshIndicator(
+        onRefresh: () async{
+          print('here');
+        },
+        child: SingleChildScrollView(
+          child: screens[_selectedIndex],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
-        onTap: (val){
+        onTap: (val) {
           setState(() {
             _selectedIndex = val;
           });
@@ -37,8 +42,8 @@ class _HomeLayoutState extends State<HomeLayout> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.star),label: 'Accounts'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Accounts'),
         ],
       ),
     );
