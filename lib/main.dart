@@ -1,15 +1,14 @@
-import 'package:athang_expense_tracker/hoc/home_layout.dart';
-import 'package:athang_expense_tracker/plugins/local_notifications_service.dart';
-import 'package:athang_expense_tracker/screens/auth/login_screen.dart';
+import 'package:athang_expense_tracker/plugins/local_notifications.dart';
+import 'package:athang_expense_tracker/screens/Temp_screen.dart';
 import 'package:athang_expense_tracker/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'plugins/local_shared_preferences.dart';
 import 'screens/common/temp_screen.dart';
 
-void main() {
-  LocalStorage();
-  LocalNotificationService.initialize();
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await LocalNotification.initialize();
   runApp(const MyApp());
 }
 
@@ -25,7 +24,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      // home: SplashScreen(),
+      home: TempScreen(),
       // home: HomeLayout(),
     );
   }

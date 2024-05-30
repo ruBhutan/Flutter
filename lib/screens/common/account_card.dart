@@ -1,7 +1,11 @@
 import 'package:athang_expense_tracker/base/style/text_styles.dart';
+import 'package:athang_expense_tracker/domain/account/account_model.dart';
 import 'package:flutter/material.dart';
 
 class AccountCard extends StatelessWidget {
+  AccountModel account;
+
+  AccountCard(this.account);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,9 +29,9 @@ class AccountCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('NIBL', style: TypoStyles().kSectionHeader,),
+                  Text(account.title, style: TypoStyles().kSectionHeader,),
                   CircleAvatar(
-                  backgroundImage: NetworkImage("https://cdn.pixabay.com/photo/2024/03/15/18/53/magnolia-flower-8635583_1280.jpg"),
+                  backgroundImage: NetworkImage(account.img),
                   )
                 ],
               ),
@@ -40,11 +44,11 @@ class AccountCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Nu. 12000',
+                  'Nu. ${account.openingBalance}',
                   style: TypoStyles().kPageHeader,
                 ),
                 Text(
-                  'Nu. 1200 this month',
+                  'Balance',
                   style: TypoStyles().kSectionHeader,
                 ),
               ],
