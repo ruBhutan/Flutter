@@ -1,33 +1,36 @@
+import 'package:athang_expense_tracker/domain/landing/summary_model.dart';
 import 'package:athang_expense_tracker/domain/landing/summary_repo.dart';
 import 'package:flutter/material.dart';
 
 class SummaryHome extends StatefulWidget {
-  const SummaryHome({super.key});
-
   @override
   State<SummaryHome> createState() => _SummaryHomeState();
 }
 
 class _SummaryHomeState extends State<SummaryHome> {
+  SummaryModel summary = SummaryModel();
+
   @override
-  void initState(){
+  void initState() {
     loadData();
   }
 
-  Future<void> loadData() async{
-    SummaryRepo().loadSummaryData();
+  Future<void> loadData() async {
+    SummaryModel res = await loadSummaryData();
+    setState(() {
+      summary = res;
+    });
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Container(
       // color:Colors.blueAccent,
-      height:260,
+      height: 260,
       child: Stack(
         children: [
           Container(
-            height:165,
+            height: 165,
             color: Colors.redAccent,
           ),
           Align(
@@ -51,8 +54,9 @@ class _SummaryHomeState extends State<SummaryHome> {
                           style: TextStyle(fontSize: 20),
                         ),
                         Text(
-                          'Nu. 34000',
-                          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                          'Nu.'+summary.openingBalance.toString(),
+                          style: TextStyle(
+                              fontSize: 32, fontWeight: FontWeight.bold),
                         ),
                         // Container(color: Colors.red, height: 50),
                       ],
@@ -81,14 +85,21 @@ class _SummaryHomeState extends State<SummaryHome> {
                                 Expanded(
                                   child: Container(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text('Total Balance', style: TextStyle(
-                                          fontSize: 16,
-                                        ),),
-                                        Text('Nu. 16,000', style: TextStyle(
-                                          fontSize: 24,
-                                        ),),
+                                        Text(
+                                          'Total Expense',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Nu. ${summary.expenses}',
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -114,14 +125,21 @@ class _SummaryHomeState extends State<SummaryHome> {
                                 Expanded(
                                   child: Container(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text('Total Balance', style: TextStyle(
-                                          fontSize: 16,
-                                        ),),
-                                        Text('Nu. 16,000', style: TextStyle(
-                                          fontSize: 24,
-                                        ),),
+                                        Text(
+                                          'Total Income',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Nu. ${summary.income}',
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
