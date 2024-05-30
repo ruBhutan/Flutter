@@ -1,30 +1,11 @@
 import 'dart:convert';
 
 import 'package:athang_expense_tracker/base/style/text_styles.dart';
-import 'package:athang_expense_tracker/plugins/http.dart';
+import 'package:athang_expense_tracker/domain/transaction/transaction_repo.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class TransactionModel {
-  num id;
-  String createdAt;
-  String updatedAt;
-  String title;
-  String note;
-  String? document;
-  num amount;
-  String type;
-
-  TransactionModel({
-    this.id = 1,
-    this.createdAt = "",
-    this.updatedAt = "",
-    this.title = "",
-    this.note = '',
-    this.document = null,
-    this.amount = 0,
-    this.type = "EXPENSE",
-  });
-}
+import '../../domain/transaction/transaction_model.dart';
 
 class SummaryTransactions extends StatefulWidget {
   const SummaryTransactions({super.key});
@@ -38,31 +19,14 @@ class _SummaryTransactionsState extends State<SummaryTransactions> {
   @override
   void initState() {
     // super.initState();
-    loadTransactionsData();
+    loadData();
   }
 
-  Future<void> loadTransactionsData() async {
-    final res = await GetRequest('transaction/me');
-    print(jsonDecode(res.body)['data']);
-    List<TransactionModel> temp = [];
-
-    for(final data in jsonDecode(res.body)['data']){
-      temp.add(TransactionModel(
-          id:data['id'],
-          createdAt:data['createdAt'],
-          updatedAt:data['updatedAt'],
-          title:data['title'],
-          note:data['note'],
-          document:data['document'],
-          amount:data['amount'],
-          type:data['type'],
-      ));
-    }
-
+  Future<void> loadData() async {
+    final res = await loadTransactionData();
     setState(() {
-      transactions = temp;
+      transactions = res;
     });
-
   }
 
   @override
@@ -84,7 +48,8 @@ class _SummaryTransactionsState extends State<SummaryTransactions> {
             child: Column(
               children: transactions.map((transaction)=>  ListTile(
                 title: Text(transaction.title),
-                subtitle: Text(transaction.note),
+                subtitle: Text(DateFormat.yMMMd()
+                    .format(DateTime.parse(transaction.createdAt))),
                 trailing:
                 Text('Nu. ${transaction.amount}', style: TextStyle(
                   fontSize: 24,
