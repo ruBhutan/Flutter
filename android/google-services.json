@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "280265218916",
+    "project_id": "athang-notification",
+    "storage_bucket": "athang-notification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280265218916:android:b73c6442e8371ae1a1b871",
+        "android_client_info": {
+          "package_name": "com.example.athang_expense_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT6_78s_gJ0w_vMClzHXuR6N1u195vSkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
