@@ -1,14 +1,21 @@
+import 'package:athang_expense_tracker/plugins/firebase_api.dart';
 import 'package:athang_expense_tracker/plugins/local_notifications.dart';
 import 'package:athang_expense_tracker/screens/Temp_screen.dart';
 import 'package:athang_expense_tracker/screens/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'firebase_options.dart';
 import 'plugins/local_shared_preferences.dart';
 import 'screens/common/temp_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await LocalNotification.initialize();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseApi().initNotifications();
   runApp(const MyApp());
 }
 
