@@ -4,7 +4,7 @@ class FirebaseApi {
   final _firebaseMessaging = FirebaseMessaging.instance;
 
   Future<void> initNotifications() async {
-    _firebaseMessaging.getToken().then((token){
+    await _firebaseMessaging.getToken().then((token){
       print(token);
     });
     NotificationSettings settings = await _firebaseMessaging.requestPermission(
