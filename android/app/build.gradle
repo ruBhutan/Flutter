@@ -27,6 +27,8 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'
+
 
 android {
     namespace = "com.example.athang_expense_tracker"
